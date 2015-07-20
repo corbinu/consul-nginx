@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Consul Nginx start script.
+
+set -e
+
+if [ "$1" = 'load-balance' ]
+then
+
+    if [ "$(id -u)" != "0" ]; then
+        echo "This script must be run as root"
+        exit 1
+    fi
+
+     nginx -g "daemon off;"
+fi
+
+exec "$@"
