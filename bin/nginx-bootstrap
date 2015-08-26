@@ -71,7 +71,7 @@ if [ "$1" = 'load-balance' ]
     echo '# Registering service instance'
     echo '#'
 
-    curl -f --retry 7 --retry-delay 3 http://$CONSUL_IP:$CONSUL_PORT/v1/agent/service/register -d "$(printf '{"ID":"nginx-%s","Name":"lb-%s","Address":"%s"}' $PRIVATE_IP $SERVICE $PRIVATE_IP)"
+    curl -f --retry 7 --retry-delay 3 http://$CONSUL_IP:$CONSUL_PORT/v1/agent/service/register -d "$(printf '{"ID":"nginx-%s","Name":"lb-%s","Address":"%s","Port":80}' $PRIVATE_IP $SERVICE $PRIVATE_IP)"
 
     installed
 else
